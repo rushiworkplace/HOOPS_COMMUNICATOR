@@ -11,15 +11,14 @@ const FeatureButtons=(props)=> {
  var modeView = "View";
  var modeRender = "Render";
  var modeColor = "Color";
- var viewFirst = "Home Mode";
- var renderFirst = "reset Mode";
+ var viewFirst = "Home VIEW";
+ var renderFirst = "WireframeOnShaded";
  
   return (
     <React.Fragment>
       <div id ="drop-down"> 
         <DropDown toolBarHmv={props} viewList={viewList} mode={modeView} firstMode={viewFirst}></DropDown>
         <DropDown toolBarHmv={props} viewList={renderList} mode={modeRender} firstMode={renderFirst}></DropDown>
-        {/* <ColorDropDown toolBarHmv={props} viewList={renderList} mode={modeColor} firstMode={renderFirst}></ColorDropDown> */}
          <ColorPicker toolBarHmv={props}></ColorPicker> 
         </div>
       </React.Fragment>

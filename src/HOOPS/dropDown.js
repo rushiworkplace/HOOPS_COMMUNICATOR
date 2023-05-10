@@ -12,12 +12,8 @@ const DropDown=(props)=> {
     const mode = props.mode;
     const firstMode = props.firstMode;
     console.log(firstMode);
-  const [VIEW, setVIEW] = useState("Home View");
+  const [VIEW, setVIEW] = useState(firstMode);
   let view = useRef({});
-
-  useEffect(() => {
-    console.log(VIEW)
-  }, [VIEW])
 
   useEffect(() => {
     if (toolBarHmv !== undefined) {
@@ -28,6 +24,7 @@ const DropDown=(props)=> {
       });
     }
   }); 
+  
   const handleChange = (event) => {
     console.log(event.target.value);
     setVIEW(event.target.value);
