@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import ViewerManager from "./viewerManger";
+import FeatureButtons from "./featureButtons";
 
 const HOOPS = ()=> {
-    const [_hwv, set_hwv] = useState(undefined);
+    const [menuBarvisibility, setMenuBarVisibility] = useState(false);
+    const [_hwv, set_hwv] = useState();
  
 
-const fetchViewerData = () => {
+const fetchViewerData = (_hwv) => {
     set_hwv(_hwv);
 }
 
         return(
+            <React.Fragment>
             <div id = "External"> 
-            <ViewerManager fetchData={fetchViewerData}></ViewerManager>
+            <ViewerManager fetchData={fetchViewerData}allowMenubar={() => setMenuBarVisibility(true)}>  </ViewerManager>
             </div>
+             <div id = "FeatureUI"> <FeatureButtons hmv={_hwv}></FeatureButtons></div>
+             </React.Fragment>
         )
 }
 

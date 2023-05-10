@@ -1,9 +1,9 @@
 import microengiene from '../models/microengine.scs'
-import React, { useEffect, useState,useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Communicator from "communicator";
 
-const ViewerManager = (props)=>{
-    const [viewBegin, setViewBegin] = useState(false);
+const ViewerManager = (props) => {
+  const [viewBegin, setViewBegin] = useState(false);
   let hmv = useRef(undefined);
   useEffect(() => {
     hmv.current = createView("canvas");
@@ -19,7 +19,7 @@ const ViewerManager = (props)=>{
     viewer.setCallbacks({
       sceneReady: () => {
         viewer.view.setBackgroundColor(
-          Communicator.Color.red(),
+          new Communicator.Color(255,255,0),
           Communicator.Color.white()
         );
         viewer.view.getAxisTriad().enable();
@@ -29,15 +29,13 @@ const ViewerManager = (props)=>{
     return viewer;
   }
   if (viewBegin) {
-    console.log("I am in viewbegin");
     props.fetchData(hmv.current);
-    console.log(hmv.current);
-    //props.allowMenubar();
+    props.allowMenubar();
   }
   return (
     <div id="hoops-container">
       <div id="canvas"></div>
     </div>
   );
-    }
+}
 export default ViewerManager;
